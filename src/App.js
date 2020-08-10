@@ -1,12 +1,32 @@
 import React from 'react';
 import './App.css';
 import Header from "./components/Header";
+import SwipeButtons from "./components/SwipeButtons";
+import Chats from "./components/Chats";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route
+} from "react-router-dom";
+import TinderCards from "./components/TinderCards";
 
 function App() {
     return (
         <div className="App">
-            <h1>Let's build the tinder clone app</h1>
-            <Header/>
+            <Router>
+
+                <Switch>
+                    <Route path="/chats">
+                        <Header backButton="/"/>
+                        <Chats />
+                    </Route>
+                    <Route path="/">
+                        <Header />
+                        <TinderCards/>
+                        <SwipeButtons/>
+                    </Route>
+                </Switch>
+            </Router>
         </div>
     );
 }
